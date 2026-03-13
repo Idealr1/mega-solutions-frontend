@@ -1,0 +1,89 @@
+.collaborator-quick-order {
+    padding: 10px;
+}
+
+.quick-order-table {
+    margin-top: 20px;
+}
+
+.quick-order-table th {
+    color: #444;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.quick-order-table td {
+    vertical-align: middle;
+}
+
+.modern-input {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 14px;
+    transition: all 0.2s;
+    background: #fdfdfd;
+}
+
+.modern-input:focus {
+    border-color: #EC4E15;
+    box-shadow: 0 0 0 3px rgba(236, 78, 21, 0.1);
+    outline: none;
+    background: #fff;
+}
+
+.remove-btn {
+    color: #999;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.remove-btn:hover {
+    color: #dc2626;
+    background: #fee2e2;
+}
+
+.btn-primary:disabled,
+.btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(1);
+}
+
+.quick-order-tips {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Status Badges refinement */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-badge.approved {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.status-badge.rejected {
+    background: #fef2f2;
+    color: #dc2626;
+}

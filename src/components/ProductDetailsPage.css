@@ -1,0 +1,150 @@
+.product-details-page {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 85px;
+    /* Navbar offset */
+    font-family: 'Poppins', sans-serif;
+}
+
+.pd-not-found {
+    padding-top: 150px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Left Column - 40% */
+.pd-left-col {
+    width: 40%;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    flex-shrink: 0;
+}
+
+.pd-content-wrapper {
+    max-width: 500px;
+    width: 100%;
+}
+
+.pd-title {
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.pd-specs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pd-spec-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 20px;
+    font-size: 16px;
+    /* User said others are 20px, but 20px might be too large for this dense list. Screenshot looks smaller than title. Let's try 16px first or 18px */
+    font-size: 15px;
+    /* Screenshot looks relatively small compared to header */
+    line-height: 1.4;
+    color: #ccc;
+}
+
+.pd-spec-label {
+    color: #888;
+}
+
+.pd-spec-value {
+    color: #fff;
+}
+
+
+/* Right Column - 60% */
+.pd-right-col {
+    width: 60%;
+    position: relative;
+    overflow: hidden;
+}
+
+.pd-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Floating Center Image */
+.pd-floating-img-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.pd-floating-img {
+    width: 315px;
+    height: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .product-details-page {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .pd-left-col,
+    .pd-right-col {
+        width: 100%;
+    }
+
+    .pd-left-col {
+        order: 2;
+        padding: 40px 20px;
+    }
+
+    .pd-right-col {
+        height: 50vh;
+        order: 1;
+    }
+
+    .pd-floating-img-wrapper {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pd-floating-img {
+        width: auto;
+        height: auto;
+        max-width: 80%;
+        max-height: 90%;
+        /* Prevent overflow height-wise */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        /* Lighter shadow */
+    }
+}
+
+@media (max-width: 480px) {
+    .pd-right-col {
+        height: 60vh;
+        /* Give more space to image on very small screens if needed */
+    }
+
+    .pd-floating-img {
+        max-width: 85%;
+    }
+}

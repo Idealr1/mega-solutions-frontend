@@ -1,0 +1,184 @@
+.testimonials-section {
+    background-color: #000;
+    color: #fff;
+    padding: 80px 0 80px 80px;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.testimonials-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+    padding-right: 80px;
+}
+
+.testimonials-header {
+    font-size: 50px;
+    line-height: 1.1;
+    font-weight: 400;
+    color: #fff;
+}
+
+.testimonials-header strong {
+    font-weight: 700;
+}
+
+.testimonials-subtext {
+    font-size: 20px;
+    text-align: right;
+    color: #fff;
+    max-width: 400px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+}
+
+/* Flex Wrapper */
+.testimonials-content-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.testimonial-nav {
+    display: flex;
+    gap: 20px;
+    margin-right: 40px;
+    flex-shrink: 0;
+    z-index: 20;
+    position: relative;
+    background-color: #000;
+    /* Cover */
+}
+
+.t-nav-btn {
+    background-color: transparent;
+    /* Button style reused */
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 0;
+    width: 60px;
+    /* Bigger size */
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.t-nav-btn:hover {
+    background-color: transparent;
+    transform: scale(1.1);
+}
+
+.nav-arrow-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* If SVGs are black, invert to make them white */
+    filter: invert(1) brightness(100);
+}
+
+/* Carousel */
+.testimonials-carousel {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+.t-track {
+    display: flex;
+    /* gap: 30px; removed */
+    will-change: transform;
+}
+
+.t-card {
+    width: 535px;
+    height: 555px;
+    background-color: #C7C7C7;
+    flex-shrink: 0;
+    margin-right: 30px;
+    /* Use margin instead of gap */
+    display: flex;
+    flex-direction: column;
+    padding: 60px 40px;
+    box-sizing: border-box;
+    /* Card Styles */
+}
+
+.t-card-img-wrapper {
+    width: 145px;
+    height: 145px;
+    min-width: 145px;
+    /* Ensure width doesn't shrink */
+    min-height: 145px;
+    /* Ensure height doesn't shrink */
+    flex-shrink: 0;
+    /* Critical for preventing flex deformation */
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.t-card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.t-card-name {
+    font-size: 30px;
+    /* 30px */
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 10px 0;
+}
+
+.t-card-line {
+    width: 56px;
+    height: 2px;
+    background-color: #8A949C;
+    margin-bottom: 25px;
+}
+
+.t-card-text {
+    font-size: 20px;
+    color: #1C211D;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .testimonials-section {
+        padding: 60px 20px;
+    }
+
+    .testimonials-top-row {
+        flex-direction: column;
+        gap: 20px;
+        padding-right: 0;
+    }
+
+    .testimonials-subtext {
+        text-align: left;
+    }
+
+    .t-card {
+        width: 80vw;
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    .testimonials-content-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .testimonial-nav {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}

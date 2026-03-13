@@ -1,0 +1,155 @@
+.gallery-page {
+    padding-top: 120px;
+    /* Nav height + spacing */
+    padding-bottom: 80px;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+/* Filter */
+.gallery-filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.gallery-filter-btn {
+    background: none;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    /* Requested */
+    color: #8A949C;
+    cursor: pointer;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.gallery-filter-btn.active {
+    font-weight: 700;
+    /* Bold requested */
+    color: #000;
+}
+
+.gallery-filter-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #EC4E15;
+    /* Requested underline color */
+}
+
+/* Grid System */
+.gallery-grid {
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    /* Gap between rows */
+    padding: 0 20px;
+}
+
+.gallery-row {
+    display: flex;
+    gap: 30px;
+    /* Gap between items in row */
+    width: 100%;
+}
+
+.gallery-item {
+    height: 600px;
+    /* Requested height */
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Width Classes */
+/* User requested "40% one image 70 the other". 40+70=110. 
+   Assuming standard 40/60 split or if user really meant 40/70 then grid fails.
+   Screenshot shows standard aligned grid. Using 40% and 60%. */
+.item-40 {
+    width: 40%;
+}
+
+.item-60 {
+    width: 60%;
+}
+
+.item-50 {
+    width: 50%;
+}
+
+.item-100 {
+    width: 100%;
+}
+
+.gallery-loading,
+.gallery-empty {
+    width: 100%;
+    text-align: center;
+    padding: 100px 0;
+    font-size: 24px;
+    color: #555;
+    font-weight: 500;
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .gallery-item {
+        height: 400px;
+        /* Reduce height on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-row {
+        flex-direction: column;
+    }
+
+    .item-40,
+    .item-60,
+    .item-50,
+    .item-100 {
+        width: 100%;
+    }
+
+    .gallery-filter-btn {
+        font-size: 16px;
+    }
+}

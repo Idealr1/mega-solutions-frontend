@@ -1,0 +1,179 @@
+.cabinet-section {
+    height: 120vh;
+    background-color: #C7C7C7;
+    /* Request: #C7C7C7 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;
+    /* Increased padding as requested */
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    box-sizing: border-box;
+    /* Ensure padding doesn't affect height */
+    /* Hide overflow for carousel */
+}
+
+/* Header */
+.cabinet-header {
+    font-size: 50px;
+    text-align: center;
+    color: #000;
+    margin-bottom: 30px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.cabinet-header strong {
+    font-weight: 700;
+}
+
+/* Categories */
+.cabinet-categories {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.category-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #333;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.category-btn.active {
+    font-weight: 700;
+    border-bottom: 2px solid #EC4E15;
+    /* Request: #EC4E15 */
+}
+
+/* Carousel */
+.carousel-wrapper {
+    width: 100%;
+    display: flex;
+    /* justify-content: center; REMOVED to prevent conflict with transform */
+    align-items: center;
+    position: relative;
+    /* We need to ensure the active item is centered. 
+       A common trick is to use a transform on the track based on index. */
+    height: 500px;
+    /* Accommodate the 481px active height */
+}
+
+.carousel-track {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; removed to allow left-based calc() positioning */
+    gap: 30px;
+    /* Spacing between doors */
+    /* transition is handled inline in JS */
+    width: max-content;
+    /* Ensure items don't wrap */
+}
+
+.carousel-item {
+    transition: all 0.5s ease;
+    cursor: pointer;
+    /* Default Inactive State */
+    /* opacity and height handled via inline style for responsiveness */
+    display: flex;
+    align-items: center;
+}
+
+.carousel-item img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-item.active {
+    /* Active State */
+    z-index: 10;
+}
+
+/* Description & Controls */
+.carousel-controls {
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.description-container {
+    max-width: 600px;
+}
+
+.door-title {
+    font-size: 50px;
+    /* Request: 50px */
+    color: #293949;
+    /* Request: #293949 */
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+}
+
+.door-desc {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.cabinet-shop-btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.cabinet-shop-btn:hover {
+    background-color: #EC4E15;
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    transition: transform 0.2s;
+}
+
+.nav-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+
+    .cabinet-header,
+    .door-title {
+        font-size: 32px;
+    }
+
+    /* Item heights handled in JS */
+
+    /* .carousel-track overrides removed to allow JS positioning */
+}

@@ -1,0 +1,302 @@
+.product-listing-section {
+    padding: 80px 40px;
+    background-color: #fff;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Categories */
+.pl-categories {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 80px;
+    justify-content: center;
+}
+
+.pl-cat-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #555;
+    cursor: pointer;
+    padding-bottom: 5px;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s;
+}
+
+.pl-cat-btn.active {
+    font-size: 20px;
+    /* Active font size */
+    font-weight: 700;
+    color: #000;
+    border-bottom: 2px solid #EC4E15;
+}
+
+/* Grid Layout */
+.pl-grid {
+    width: 100%;
+    max-width: 1700px;
+    /* Adjust based on card width * 4 + gaps */
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    /* Gap between rows */
+}
+
+.pl-row {
+    display: flex;
+    justify-content: space-between;
+    /* Distribute cards */
+    width: 100%;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+/* Card Styling */
+.pl-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    /* Card width defined by user logic (wrapper mimics card width usage) */
+}
+
+.pl-card {
+    width: 400px;
+    height: 540px;
+    background-color: #fff;
+    /* or specific off-white if needed, user said background shadow box-shadow */
+    /* Check if card itself has background. Usually needed for shadow to show. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+
+    /* Shadow */
+    box-shadow: 7px 8px 13px -10px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 7px 8px 13px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 7px 8px 13px -10px rgba(0, 0, 0, 0.75);
+    transition: transform 0.2s ease;
+}
+
+.pl-card:hover {
+    transform: translateY(-5px);
+}
+
+.pl-card-img {
+    width: 215px;
+    /* Requested width */
+    height: auto;
+    object-fit: contain;
+}
+
+.pl-card-title {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    margin: 10px 0;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.pl-shop-btn {
+    font-size: 20px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid #8A949C;
+    color: #555;
+    padding-bottom: 2px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Feature Row */
+.feature-row {
+    /* Contains 1 card and 1 feature block */
+    display: flex;
+    /* Ensure it is flex container if not relying on row class */
+}
+
+.pl-feature-block {
+    flex: 1;
+    position: relative;
+    height: 540px;
+    /* Match card height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    background-color: transparent;
+    /* Ensure transparent base */
+}
+
+.pl-feature-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    /* Slightly more than 50% to look like the design */
+    height: 100%;
+    background-color: #171717;
+    /* Dark black */
+    z-index: 1;
+}
+
+.pl-feature-img {
+    position: relative;
+    z-index: 2;
+    width: auto;
+    height: 90%;
+    /* Make image slightly taller than the box as per screenshot effect? Or just large */
+    /* Screenshot shows image is quite large. */
+    max-height: 120%;
+    object-fit: contain;
+    /* Center horizontal naturally by flex parent */
+}
+
+/* Pagination */
+.pl-pagination {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.pl-page-arrow {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    color: #aaa;
+    /* Gray per screenshot */
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.pl-page-arrow img {
+    height: 20px;
+    filter: none;
+    /* Keep original color or filter to gray? SVGs are likely white currently from previous task. 
+                    Wait, prev task I inverted them to white. 
+                    If background is white here, white arrows won't show!
+                    I need to invert them back to black or use css filter. */
+    filter: invert(0) !important;
+    /* Force black if they are white? 
+                                    If current SVG is black and I inverted in CSS, 
+                                    here I must ensure they show up. */
+}
+
+.pl-page-numbers {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.pl-page-num {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #aaa;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+.pl-page-num.active {
+    font-weight: 700;
+    color: #000;
+    border-bottom: 2px solid #EC4E15;
+}
+
+.pl-loading,
+.pl-empty {
+    width: 100%;
+    text-align: center;
+    padding: 100px 0;
+    font-size: 24px;
+    color: #555;
+    font-weight: 500;
+}
+
+/* Responsiveness */
+@media (max-width: 1400px) {
+
+    /* Scale down or wrap */
+    .pl-grid {
+        max-width: 100%;
+        /* Ensure it doesn't overflow */
+        align-items: center;
+    }
+
+    .pl-row {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .feature-row {
+        flex-direction: column;
+    }
+
+    .pl-feature-block {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 40px;
+        height: 500px;
+        /* Adjust height for tablet */
+    }
+
+    .pl-feature-img {
+        max-width: 100%;
+        /* Prevent overflow */
+        height: auto;
+        max-height: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .pl-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pl-card-wrapper {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .pl-feature-block {
+        height: 350px;
+        /* Smaller height for mobile */
+        margin-top: 20px;
+    }
+
+    .pl-feature-bg {
+        width: 70%;
+        /* Wider background on mobile for better cover */
+    }
+
+    .pl-feature-img {
+        height: 100%;
+        /* Fill the container */
+        max-width: 90%;
+        /* Slight padding */
+    }
+
+    .pl-categories {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .pl-pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        max-width: 100%;
+    }
+
+    .pl-page-numbers {
+        overflow-x: auto;
+        max-width: 100%;
+    }
+}

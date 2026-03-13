@@ -1,0 +1,177 @@
+.hero-container {
+    display: flex;
+    height: 100vh;
+    /* Request: 100vh */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    /* Prevent scroll if images bleed */
+}
+
+/* Left Side - 40% Black Background */
+.hero-left {
+    width: 40%;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    /* Vertically center content */
+    justify-content: flex-end;
+    /* Push content towards the center split, slightly */
+    padding-right: 180px;
+    /* Increased to avoid door overlap (120px half-door + gap) */
+}
+
+.hero-content {
+    width: 400px;
+    /* Request: width 400px */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Header Text */
+.hero-header {
+    font-size: 60px;
+    /* Request: 60px */
+    line-height: 1.1;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+/* Paragraph Text */
+.hero-description {
+    font-size: 20px;
+    /* Request: 20px */
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    /* Regular */
+    opacity: 0.8;
+}
+
+/* Button */
+.hero-btn {
+    display: inline-block;
+    width: fit-content;
+    font-size: 20px;
+    /* Request: 20px */
+    color: #fff;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    /* Request: border bottom only */
+    padding: 5px 0;
+    /* Reduced padding for link-like appearance */
+    text-transform: lowercase;
+    transition: all 0.3s ease;
+    margin-top: 40px;
+    /* Increased margin to match spacing in design */
+    border-radius: 0;
+    text-decoration: none;
+}
+
+.hero-btn:hover {
+    opacity: 0.8;
+}
+
+/* Right Side - 60% Image */
+.hero-right {
+    width: 60%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Door - Overlapping Center */
+.hero-door-container {
+    position: absolute;
+    left: 40%;
+    /* Position at the split line */
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* Center perfectly on the line and vertically */
+    width: 240px;
+    /* Request: 240px width */
+    height: auto;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-door-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    /* Optional: adds depth */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .hero-container {
+        flex-direction: column;
+        height: 100vh;
+        /* Keep full height */
+    }
+
+    /* Top Half (Black) */
+    .hero-left {
+        width: 100%;
+        height: 50%;
+        padding-right: 0;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        width: 90%;
+        /* Fluid width */
+        max-width: 500px;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .hero-header {
+        font-size: 40px;
+        /* Smaller header */
+        width: 100%;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    /* Bottom Half (Image) */
+    .hero-right {
+        width: 100%;
+        height: 50%;
+    }
+
+    /* Door - Center on horizontal seam */
+    .hero-door-container {
+        left: 50%;
+        /* Center horizontally */
+        top: 50%;
+        /* Center vertically on the seam */
+        transform: translate(-50%, -50%);
+        width: 160px;
+        /* Smaller door for mobile */
+    }
+
+    .hero-btn {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-header {
+        font-size: 32px;
+    }
+
+    .hero-door-container {
+        width: 120px;
+        /* Even smaller door */
+    }
+}

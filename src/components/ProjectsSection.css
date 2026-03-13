@@ -1,0 +1,144 @@
+.projects-section {
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+    padding: 80px 0 80px 80px;
+    /* Left padding for header, no right padding to let images bleed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.projects-header-container {
+    margin-bottom: 50px;
+    max-width: 400px;
+    /* Removed padding and alignment props since nav is moved */
+}
+
+.projects-header {
+    font-size: 50px;
+    line-height: 1.1;
+    font-weight: 400;
+    width: 600px;
+}
+
+.projects-header strong {
+    font-weight: 700;
+}
+
+/* Wrapper to align Nav and Carousel side-by-side */
+.projects-content-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.project-nav {
+    display: flex;
+    gap: 20px;
+    margin-right: 40px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 20;
+    /* Ensure arrows are above sliding images */
+    background-color: #000;
+    /* Optional: opaque bg if need to cover underlying */
+}
+
+.p-nav-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 0;
+    width: 60px;
+    /* Bigger size */
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-nav-btn:hover {
+    background-color: transparent;
+    transform: scale(1.1);
+}
+
+.nav-arrow-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* If SVGs are black, invert to make them white */
+    /* Assuming they are black based on user asking for 'white color' */
+    filter: invert(1) brightness(100);
+}
+
+/* Carousel */
+.projects-carousel {
+    flex: 1;
+    /* Take remaining width */
+    overflow: hidden;
+    /* Clip images as they slide out to the left towards arrows */
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.p-track {
+    display: flex;
+    /* gap removed to ensure translation math is robust */
+    will-change: transform;
+}
+
+.p-item {
+    height: 70vh;
+    min-width: 40vw;
+    margin-right: 30px;
+    /* Explicit margin instead of gap */
+    flex-shrink: 0;
+}
+
+.p-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Aspect ratio preserved? */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .projects-section {
+        padding: 50px 20px;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .projects-header-container {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .projects-header {
+        font-size: 36px;
+    }
+
+    .p-item {
+        height: 50vh;
+        min-width: 80vw;
+        /* Mobile: Show 1 and a peek */
+    }
+
+    .projects-content-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .project-nav {
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+}

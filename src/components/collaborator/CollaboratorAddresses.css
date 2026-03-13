@@ -1,0 +1,193 @@
+.collaborator-addresses {
+    padding: 10px;
+}
+
+.address-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.address-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.address-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+}
+
+.address-card.default {
+    border-color: #EC4E15;
+    background: #fffcfb;
+}
+
+.address-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.address-type-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    background: #f3f4f6;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.default-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #EC4E15;
+    background: #fee2e2;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.address-details {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.address-details p {
+    margin: 0 0 4px 0;
+    color: #444;
+}
+
+.address-details .line-1 {
+    font-weight: 600;
+    font-size: 16px;
+    color: #1a1a1a;
+}
+
+.address-details .city-state {
+    font-size: 14px;
+}
+
+.address-details .country {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.address-card-actions {
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #f5f5f5;
+}
+
+.btn-icon-sm {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+    padding: 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-icon-sm:hover {
+    background: #f3f4f6;
+    color: #1a1a1a;
+}
+
+.btn-icon-sm.danger:hover {
+    background: #fee2e2;
+    color: #dc2626;
+    border-color: #fecaca;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    color: #666;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.btn-text:hover {
+    color: #EC4E15;
+}
+
+/* Modal refinements */
+.address-modal {
+    max-width: 550px;
+}
+
+.type-toggle {
+    margin-bottom: 10px;
+}
+
+.toggle-option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    background: #fff;
+}
+
+.toggle-option input {
+    display: none;
+}
+
+.toggle-option.active {
+    border-color: #EC4E15;
+    color: #EC4E15;
+    background: #fffcfb;
+    box-shadow: 0 0 0 1px #EC4E15;
+}
+
+.checkbox-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    user-select: none;
+}
+
+.checkbox-toggle input {
+    width: 18px;
+    height: 18px;
+    accent-color: #EC4E15;
+}
+
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 15px;
+}
+
+@media (max-width: 600px) {
+    .form-grid-3 {
+        grid-template-columns: 1fr;
+    }
+}

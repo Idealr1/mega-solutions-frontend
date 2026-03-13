@@ -1,0 +1,293 @@
+.b2b-page {
+    background-color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+}
+
+.b2b-header {
+    text-align: center;
+    padding: 80px 0 60px 0;
+}
+
+.b2b-header h1 {
+    font-size: 60px;
+    font-weight: 300;
+    color: #000;
+}
+
+.b2b-header h1 strong {
+    font-weight: 700;
+}
+
+/* Container Split */
+.b2b-container {
+    display: flex;
+    width: 100%;
+}
+
+/* Left - White Background (40%) */
+.b2b-left {
+    width: 40%;
+    background-color: #fff;
+    padding: 100px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers form horizontally in the 40% block if form has width */
+}
+
+/* Right - Black Background (60%) */
+.b2b-right {
+    width: 60%;
+    background-color: #000;
+    padding: 100px 80px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Section Titles */
+.b2b-section-title {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 80px;
+    text-align: center;
+    width: 100%;
+}
+
+.b2b-section-title.dark {
+    color: #555;
+}
+
+.b2b-section-title.light {
+    color: #fff;
+}
+
+/* Form Styling */
+.b2b-form {
+    width: 100%;
+    max-width: 600px;
+    /* Limit width for aesthetics */
+    margin: 0 auto;
+}
+
+.b2b-input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+    /* Spacious spacing per design */
+    position: relative;
+    width: 100%;
+}
+
+.b2b-input-group label {
+    font-size: 20px;
+    /* Requested 20px */
+    color: #555;
+    margin-bottom: 15px;
+    pointer-events: none;
+    /* Move to placeholder style if needed, but screenshot implies label above or placeholder acting as label? 
+                             Screenshot shows "Username*" sitting just above line? 
+                             Actually, looking closely at typical minimal designs, usually it's a placeholder.
+                             But user said "font size of those are 20px".
+                             I'll simulate a floating label or just clear label above line.
+                             Screenshot: Text sits on top of line. */
+    color: inherit;
+    /* inherit from section color */
+}
+
+.b2b-left .b2b-input-group label {
+    color: #555;
+}
+
+.b2b-right .b2b-input-group label {
+    color: #fff;
+}
+
+/* Input Fields */
+.b2b-input {
+    background: none;
+    border: none;
+    border-bottom: 2px solid #EC4E15;
+    /* Orange Line */
+    font-size: 20px;
+    padding: 10px 0;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+}
+
+.b2b-input.light-mode {
+    color: #000;
+}
+
+.b2b-input.dark-mode {
+    color: #fff;
+}
+
+.b2b-input.dark-mode option {
+    background: #000;
+    color: #fff;
+}
+
+/* Dropdown Arrow Customization usually requires wrapper or appearance:none */
+.icon-arrow select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23EC4E15%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0 top 50%;
+    background-size: .65em auto;
+}
+
+/* Row for side-by-side inputs */
+.b2b-row {
+    display: flex;
+    gap: 40px;
+}
+
+.b2b-row .b2b-input-group {
+    flex: 1;
+}
+
+/* Register Button */
+.b2b-register-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    border-bottom: 2px solid #555;
+    /* Default greyish underline */
+    padding-bottom: 5px;
+    cursor: pointer;
+    margin-top: 40px;
+    text-transform: lowercase;
+    /* "register" */
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s;
+}
+
+.b2b-register-btn:hover {
+    border-color: #EC4E15;
+    color: #EC4E15;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .b2b-container {
+        flex-direction: column;
+    }
+
+    .b2b-left,
+    .b2b-right {
+        width: 100%;
+        padding: 60px 20px;
+    }
+
+    .b2b-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/* Success Modal - Professional/Glassmorphism Theme */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content-success {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: scale(0.9);
+    animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes scaleUp {
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.success-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: #e8f5e9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.modal-content-success h2 {
+    font-size: 28px;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.modal-content-success p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.btn-success-close {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    font-weight: 500;
+}
+
+.btn-success-close:hover {
+    background-color: #EC4E15;
+    transform: translateY(-2px);
+}
+
+/* Fix Input Autofill Styles */
+.b2b-input:-webkit-autofill,
+.b2b-input:-webkit-autofill:hover,
+.b2b-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.b2b-input.dark-mode:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px black inset;
+    -webkit-text-fill-color: white;
+}

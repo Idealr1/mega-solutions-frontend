@@ -1,0 +1,125 @@
+.about-story-section {
+    height: 100vh;
+    width: 100%;
+    /* 40% Black, 60% White Split */
+    background: linear-gradient(to right, #000 40%, #fff 40%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.story-container {
+    display: flex;
+    width: 100%;
+    max-width: 1800px;
+    /* Wide container to accommodate big image */
+    padding: 0 40px;
+    align-items: center;
+}
+
+.story-left {
+    position: relative;
+    /* Image is 950px width requested */
+    flex: 0 0 950px;
+    z-index: 10;
+}
+
+.story-img {
+    width: 950px;
+    height: auto;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    /* Optional shadow for depth */
+}
+
+.story-right {
+    flex: 1;
+    padding-left: 60px;
+    z-index: 5;
+}
+
+.story-text-wrapper {
+    max-width: 600px;
+}
+
+.story-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 60px;
+    line-height: 1.1;
+    color: #000;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.story-title strong {
+    font-weight: 700;
+}
+
+.story-desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #8A949C;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Responsiveness */
+@media (max-width: 1600px) {
+    .story-img {
+        width: 100%;
+        max-width: 700px;
+    }
+
+    .story-left {
+        flex: 0 0 700px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-story-section {
+        height: auto;
+        min-height: 100vh;
+        background: linear-gradient(to bottom, #000 500px, #fff 500px);
+        /* Stack vertically on tablet? */
+        align-items: flex-start;
+        padding: 60px 0;
+    }
+
+    .story-container {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .story-left {
+        flex: 0 0 auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 60px;
+    }
+
+    .story-img {
+        max-width: 90%;
+        width: auto;
+    }
+
+    .story-right {
+        padding-left: 0;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .story-title {
+        font-size: 40px;
+    }
+
+    .story-desc {
+        font-size: 16px;
+    }
+}

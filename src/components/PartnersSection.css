@@ -1,0 +1,138 @@
+.partners-section {
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 0 80px;
+    box-shadow: 7px 8px 13px -10px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 7px 8px 13px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 7px 8px 13px -10px rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    z-index: 5;
+    /* Ensure shadow sits on top if needed */
+}
+
+/* Right Side Text */
+.partners-text-container {
+    width: 300px;
+    flex-shrink: 0;
+    text-align: right;
+    margin-left: 40px;
+    z-index: 10;
+    background: #fff;
+    /* Ensure it covers scrolling logos if they overlap */
+    padding: 20px 0;
+}
+
+.partners-text {
+    font-size: 36px;
+    /* Adjust size to match screenshot visual */
+    font-weight: 300;
+    line-height: 1.2;
+    color: #000;
+    margin: 0 0 10px 0;
+}
+
+.partners-text strong {
+    font-weight: 700;
+}
+
+.partners-line {
+    width: 100%;
+    /* Or specific width? Screenshot shows full width of text box approx */
+    height: 4px;
+    /* Thickness */
+    background-color: #EC4E15;
+    margin-left: auto;
+    /* Align right */
+    max-width: 150px;
+    /* Guessing length from design, or use width: 100% of 300px? */
+    /* Screenshot shows line under "the best" mostly. Adjust width. */
+    width: 120px;
+}
+
+/* Carousel/Marquee */
+.partners-carousel-wrapper {
+    flex: 1;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.partners-track {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    animation: scroll 20s linear infinite;
+}
+
+.partner-logo {
+    flex-shrink: 0;
+    width: 150px;
+    /* Adjust based on logo size */
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.partner-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    /* Often partners sections are grayscale, remove if not wanted */
+    opacity: 0.7;
+    transition: all 0.3s;
+}
+
+.partner-logo img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-100% / 3));
+        /* We have 3 sets, scroll 1 set length */
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .partners-section {
+        flex-direction: column-reverse;
+        /* Text on top or bottom? usually logos on bottom */
+        height: auto;
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    .partners-text-container {
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+        margin-bottom: 40px;
+    }
+
+    .partners-line {
+        margin: 0 auto;
+        /* Center line */
+    }
+
+    .partners-carousel-wrapper {
+        width: 100%;
+        height: 150px;
+        /* Fixed height for carousel on mobile */
+    }
+}

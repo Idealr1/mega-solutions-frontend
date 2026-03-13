@@ -1,0 +1,186 @@
+.register-page {
+    background-color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+}
+
+.register-container {
+    display: flex;
+    min-height: 80vh;
+    width: 100%;
+}
+
+/* Left Side (Black, 40%) */
+.register-left {
+    width: 40%;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 40px;
+    color: #fff;
+}
+
+.register-left-text {
+    font-size: 20px;
+    margin-bottom: 60px;
+    text-align: left;
+    width: 100%;
+    max-width: 630px;
+    line-height: 1.5;
+}
+
+.register-left-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+.register-btn-blue {
+    background-color: #74BAE2;
+    color: #fff;
+    width: 630px;
+    height: 65px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    max-width: 100%;
+}
+
+.register-btn-grey {
+    background-color: #46515A;
+    color: #fff;
+    width: 630px;
+    height: 65px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    max-width: 100%;
+}
+
+/* Right Side (White, 60%) */
+.register-right {
+    width: 60%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 80px;
+    color: #000;
+}
+
+.register-title {
+    font-size: 60px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.register-subtitle {
+    font-size: 16px;
+    color: #aaa;
+    margin-bottom: 40px;
+}
+
+.register-subtitle a {
+    color: #74BAE2;
+    text-decoration: none;
+}
+
+.register-form {
+    width: 100%;
+    max-width: 675px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-input-group {
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.register-input-group label {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.register-input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #EC4E15;
+    font-size: 20px;
+    padding: 10px 0;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.register-submit-btn {
+    background-color: #EC4E15;
+    color: #fff;
+    width: 675px;
+    height: 63px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.3s;
+    margin-top: 20px;
+}
+
+.register-submit-btn:hover {
+    background-color: #d1400e;
+}
+
+.register-submit-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.register-footer-text {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+    max-width: 675px;
+}
+
+.register-footer-text a {
+    color: #74BAE2;
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .register-container {
+        flex-direction: column;
+    }
+
+    .register-left,
+    .register-right {
+        width: 100%;
+        padding: 60px 20px;
+    }
+
+    .register-btn-blue,
+    .register-btn-grey,
+    .register-submit-btn {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .register-left-text {
+        text-align: center;
+        max-width: 500px;
+    }
+}

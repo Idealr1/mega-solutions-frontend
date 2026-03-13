@@ -1,0 +1,103 @@
+.subscribe-section {
+    padding: 100px 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.subscribe-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.subscribe-header {
+    width: 350px;
+    font-size: 50px;
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: 300;
+}
+
+.subscribe-header strong {
+    font-weight: 700;
+}
+
+.subscribe-subtext {
+    font-size: 20px;
+    color: #8A949C;
+    /* Assumed gray based on screenshot/description */
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.subscribe-form {
+    width: 910px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    max-width: 90%;
+    /* Responsive fallback */
+}
+
+.subscribe-input {
+    flex: 1;
+    /* Take remaining space */
+    border: none;
+    border-bottom: 2px solid #EC4E15;
+    padding: 10px 0;
+    font-size: 16px;
+    outline: none;
+    margin-right: 20px;
+    /* Spacing between input and button */
+    font-family: 'Poppins', sans-serif;
+}
+
+.subscribe-input::placeholder {
+    color: #ccc;
+}
+
+.subscribe-btn {
+    width: 85px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid #8A949C;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #000;
+    cursor: pointer;
+    text-align: right;
+    /* Or center? Screenshot looks standardized */
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.subscribe-btn:hover {
+    border-bottom-color: #000;
+    color: #000;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .subscribe-form {
+        width: 90%;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .subscribe-input {
+        width: 100%;
+        margin-right: 0;
+        text-align: center;
+    }
+
+    .subscribe-btn {
+        width: 100%;
+        text-align: center;
+    }
+}

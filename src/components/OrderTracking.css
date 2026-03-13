@@ -1,0 +1,118 @@
+.order-tracking-container {
+    padding: 30px 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+.tracking-timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+.tracking-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.stage-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.stage-label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 10px;
+    color: #8A949C;
+}
+
+.stage-connector {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: #ddd;
+    z-index: -1;
+}
+
+/* Active & Completed States */
+.tracking-stage.active .stage-icon-wrapper {
+    border-color: #EC4E15;
+    background: #EC4E15;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(236, 78, 21, 0.3);
+}
+
+.tracking-stage.active .stage-label {
+    color: #000;
+    font-weight: 600;
+}
+
+.tracking-stage.completed .stage-icon-wrapper {
+    border-color: #10b981;
+    background: #10b981;
+    color: #fff;
+}
+
+.tracking-stage.completed .stage-label {
+    color: #10b981;
+}
+
+.tracking-stage.completed .stage-connector {
+    background: #10b981;
+}
+
+/* Error State */
+.order-tracking-error {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.error-info h4 {
+    margin: 0 0 5px 0;
+    color: #be123c;
+}
+
+.error-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #e11d48;
+}
+
+.tracking-info {
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    font-size: 15px;
+    color: #333;
+}
+
+@media (max-width: 600px) {
+    .stage-label {
+        font-size: 11px;
+    }
+}

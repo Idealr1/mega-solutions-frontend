@@ -1,0 +1,87 @@
+.overlay-section {
+    height: 70vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    text-align: center;
+    color: #fff;
+    /* Adding a dark tint to match the dark look in screenshot and ensure readability */
+}
+
+.overlay-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent black overlay */
+    z-index: 1;
+}
+
+.overlay-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 800px;
+}
+
+.overlay-header {
+    font-size: 50px;
+    /* Request: 50px */
+    font-weight: 600;
+    /* Request: Semibold */
+    margin: 0 0 20px 0;
+    line-height: 1.25;
+}
+
+.overlay-desc {
+    font-size: 20px;
+    /* Request: 20px */
+    margin: 0 0 40px 0;
+    line-height: 1.5;
+    color: #f0f0f0;
+}
+
+.see-more-btn {
+    font-size: 20px;
+    /* Request: 20px */
+    background: none;
+    border: none;
+    border-bottom: 2px solid #8A949C;
+    /* Request: #8A949C border bottom only */
+    padding-bottom: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.see-more-btn:hover {
+    color: #bcbcbc;
+    border-color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .overlay-section {
+        height: auto;
+        padding: 60px 0;
+        min-height: 40vh;
+    }
+
+    .overlay-header {
+        font-size: 32px;
+    }
+}

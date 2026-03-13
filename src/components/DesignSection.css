@@ -1,0 +1,314 @@
+.design-section {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Split Background: 60% White | 40% Black */
+    background: linear-gradient(to right, #fff 60%, #000 60%);
+}
+
+.design-content {
+    display: flex;
+    width: 90%;
+    max-width: 1400px;
+    /* Constrain max width for large screens */
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+/* LEFT SIDE */
+.design-left {
+    width: 45%;
+    padding-right: 50px;
+}
+
+.design-header {
+    font-size: 60px;
+    /* Request: 60px */
+    width: 600px;
+    /* Increased to 600px to fit "Design it where" on one line */
+    line-height: 1.1;
+    font-weight: 300;
+    /* Lighter weight for "where it matters most" */
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+
+.design-header strong {
+    font-weight: 700;
+    /* Bold for "Design it" */
+}
+
+.design-desc {
+    font-size: 20px;
+    /* Request: 20px */
+    color: #666;
+    margin-bottom: 40px;
+    max-width: 450px;
+}
+
+.slide-text {
+    font-size: 20px;
+    /* Request: 20px */
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Slider Controls */
+.slider-wrapper {
+    width: 300px;
+    margin-bottom: 40px;
+}
+
+.design-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.design-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #333;
+    cursor: pointer;
+}
+
+.generate-btn {
+    font-size: 20px;
+    /* Request: 20px */
+    background: none;
+    border: none;
+    border-bottom: 2px solid #8A949C;
+    /* Request: #8A949C border bottom only */
+    padding-bottom: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    color: #333;
+    transition: opacity 0.3s;
+}
+
+.generate-btn:hover {
+    opacity: 0.7;
+}
+
+/* RIGHT SIDE (Images) */
+.design-right {
+    width: 55%;
+    position: relative;
+    /* Request: Image Width 1090px, Height 815px */
+    /* We must scale this to fit responsive layout while keeping aspect ratio */
+    display: flex;
+    justify-content: center;
+}
+
+.comparison-container {
+    position: relative;
+    width: 100%;
+    /* Adapts to container */
+    max-width: 800px;
+    /* Limit huge size on desktop, but raw image is larger */
+    aspect-ratio: 1090 / 815;
+    /* Maintain aspect ratio of raw images */
+    overflow: hidden;
+    /* Optional: shadow or border? Not requested, keeping clean. */
+}
+
+/* Images */
+.comp-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.room-img {
+    /* Bottom layer */
+}
+
+.comp-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow: hidden;
+    /* Width controlled by JS state */
+    border-right: 2px solid #fff;
+    /* Divider line */
+}
+
+.after-img {
+    /* Since overlay is clipped, we need to force this image to be full width 
+       of the container so it aligns with the bottom image, not the clipped div. */
+    width: 100%;
+    max-width: none;
+    /* Override any max-width */
+    height: 100%;
+    /* Key: this image needs to be the size of the container, even if parent is narrow */
+    /* We can set width to the width of the comparison-container via calc or specific sizing?
+       Actually, 'width: auto' and 'height: 100%' might work if aspect ratio is locked.
+       Or better: width of the container. 
+    */
+    /* This works if comp-overlay width changes, but image inside stays fixed size */
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    /* Force it to fill the clip container's reference frame? No. */
+}
+
+/* Wait, if I shrink the overlay div to 50%, a 100% width image inside is 50% of the screen.
+   We want the image to remain full scale, just cropped. 
+   So we need to set the width of the image inside the overlay to be the width of the CONTAINER.
+*/
+.comp-overlay .after-img {
+    width: auto;
+    height: 100%;
+    min-width: 100%;
+    /* This is tricky in CSS alone if container varies. 
+                      Ideally we set width to the container pixel width.
+                      OR we use object-fit cover logic. 
+    */
+    /* Actually simple trick: Set width to the width of the container using vw calculation or just absolute spacing? */
+    /* Better trick: width: 100% of the GRANDPARENT (.comparison-container) */
+    /* Since .comp-overlay is relative to container, we can't easily say '100% of grandparent'. */
+    /* JS-less fix: Set image width to a fixed huge value or use background-image? */
+    /* Let's try matching container aspect ratio. */
+}
+
+/* Correct overlay image technique */
+.comp-overlay img {
+    /* This needs to be the width of .comparison-container */
+    /* If .comparison-container is 800px. Overlay is 400px. 
+       Image inside overlay must be 800px. */
+    width: 100%;
+}
+
+/* WAIT, width 100% inside a 50% div is 50% size. Incorrect. */
+.comparison-container {
+    /* ... */
+}
+
+.comp-overlay {
+    /* ... */
+}
+
+/* We need to use a hack or set width JS side. 
+   Or use `width: 100vw` or similar if full screen. 
+   Or use `min-width: [container width]`. 
+   Let's use a very common CSS trick for comparison sliders: 
+   The overlay image is usually set to the width of the container. 
+   Since we don't know the container width in CSS pixels (it's responsive), 
+   we might need to calculate it or use specific layout. : thinking : 
+   
+   Actually, `design-right` has flex. 
+   If we use `width: 100%` on the image, it shrinks.
+   
+   Let's try this: 
+   .comp-overlay { width: X%; overflow: hidden; }
+   .comp-overlay img { width: [ContainerWidth]; } 
+   
+   We will pass the style `{ width: containerWidth }` to the image inside overlay via JS? 
+   Or simpler: Just use `height: 100%; width: auto; max-width: none;` provided aspect ratio matches.
+*/
+.comp-overlay .after-img {
+    width: auto;
+    /* Let height dictate width based on aspect ratio */
+    height: 100%;
+    max-width: none;
+    /* AND, we need to ensure the container forces the aspect ratio so `height: 100%` implies correct width. */
+}
+
+/* The room-img also needs to follow this. */
+.room-img {
+    width: 100%;
+    height: auto;
+    /* If container is width-constrained, height is auto. 
+       If container is height-constrained, width is auto. */
+}
+
+/* Let's refine for the exact requested logic */
+.comparison-container {
+    width: 100%;
+    /* Let width drive height via aspect-ratio */
+}
+
+.room-img {
+    width: 100%;
+    display: block;
+}
+
+.comp-overlay {
+    z-index: 2;
+}
+
+.comp-overlay .after-img {
+    /* We need to force this image to match .room-img dimensions exactly. */
+    height: 100%;
+    width: auto;
+    /* If aspect-ratio matches, height: 100% means width matches container width (since container aspect ratio matches image). */
+    max-width: none;
+}
+
+
+/* Slider Line */
+.slider-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #fff;
+    pointer-events: none;
+    /* Let clicks pass through */
+    z-index: 3;
+    /* Left is set via JS */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .design-section {
+        height: auto;
+        padding: 50px 0;
+        background: linear-gradient(to bottom, #fff 50%, #000 50%);
+        /* Stacked bg? Or just adapt */
+        background: #fff;
+        /* Simplify for mobile, or keep split if possible? */
+        /* User said "100vh 60/40". On desktop. 
+           On mobile, 430px text won't fit. */
+    }
+
+    .design-content {
+        flex-direction: column;
+    }
+
+    .design-left {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 50px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .design-header {
+        font-size: 40px;
+        width: 100%;
+    }
+
+    .design-right {
+        width: 100%;
+    }
+}

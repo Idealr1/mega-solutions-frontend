@@ -1,0 +1,105 @@
+.features-section {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    /* White background usually */
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    /* Adjust gap as needed */
+    max-width: 1700px;
+    /* Ensure 2 812px boxes fit? 812*2 + gap. */
+    /* If screen is smaller than 812*2, it should probably wrap or scale */
+}
+
+.feature-box {
+    width: 812px;
+    height: 195px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    box-shadow: 7px 8px 13px -10px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 7px 8px 13px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 7px 8px 13px -10px rgba(0, 0, 0, 0.75);
+    box-sizing: border-box;
+    border-radius: 4px;
+    /* Optional slight round */
+}
+
+.feature-icon-wrapper {
+    margin-right: 40px;
+}
+
+.feature-icon {
+    height: 92px;
+    width: auto;
+    object-fit: contain;
+}
+
+.feature-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.feature-title {
+    font-size: 30px;
+    font-weight: 600;
+    /* Usually bold */
+    margin: 0 0 10px 0;
+    color: #000;
+}
+
+.feature-desc {
+    font-size: 20px;
+    color: #D7D7D8;
+    /* Requested color */
+    margin: 0;
+    line-height: 1.4;
+    max-width: 500px;
+    /* Prevent text line becoming too long */
+}
+
+/* Responsive */
+@media (max-width: 1700px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .features-section {
+        height: auto;
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 850px) {
+    .feature-box {
+        width: 90vw;
+        height: auto;
+        padding: 30px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .feature-icon-wrapper {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .feature-title {
+        font-size: 24px;
+    }
+
+    .feature-desc {
+        font-size: 16px;
+    }
+}

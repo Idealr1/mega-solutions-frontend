@@ -1,0 +1,144 @@
+.footer-section {
+    height: 60vh;
+    background-color: #000;
+    color: #fff;
+    padding: 80px 80px 0 80px;
+    /* Top padding, side padding */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* To push bottom line to bottom */
+    box-sizing: border-box;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Left Column */
+.footer-left {
+    flex: 1;
+    max-width: 450px;
+    /* Allow space for 415px logo */
+}
+
+.footer-logo {
+    width: 415px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.footer-desc {
+    font-size: 20px;
+    color: #fff;
+    /* or #ccc? Screenshot looks white/light gray */
+    line-height: 1.5;
+    max-width: 415px;
+}
+
+/* Middle & Right Columns */
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer-heading {
+    font-size: 20px;
+    /* Assuming headers also follow 20px or slightly larger? User said specific layout. */
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 30px;
+    display: inline-block;
+    border-bottom: 2px solid #EC4E15;
+    padding-bottom: 5px;
+    /* Space between text and line */
+    width: fit-content;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #EC4E15;
+}
+
+.footer-contact-info p {
+    font-size: 20px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    color: #8A949C;
+    /* Icon color in screenshot looks greyish */
+}
+
+.footer-socials svg {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.footer-socials svg:hover {
+    color: #fff;
+}
+
+.footer-bottom-line {
+    width: 100%;
+    height: 1px;
+    background-color: #EC4E15;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    /* Spacing from bottom of screen? */
+    /* Screenshot shows line near bottom */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .footer-section {
+        height: auto;
+        padding: 60px 20px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .footer-logo {
+        width: 100%;
+        max-width: 300px;
+        /* Smaller logo on mobile */
+    }
+
+    .footer-desc {
+        font-size: 16px;
+        /* Smaller text on mobile? or keep 20px? User said "make it responsive" */
+    }
+
+    .footer-heading {
+        margin-bottom: 20px;
+    }
+}
