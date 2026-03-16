@@ -84,16 +84,42 @@ const ProjectsSection = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    const [touchStart, setTouchStart] = useState(0);
+    const [touchEnd, setTouchEnd] = useState(0);
+
+    const handleTouchStart = (e) => {
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const handleTouchMove = (e) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const handleTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > 50;
+        const isRightSwipe = distance < -50;
+
+        if (isLeftSwipe) {
+            handleNext();
+        } else if (isRightSwipe) {
+            handlePrev();
+        }
+
+        setTouchStart(0);
+        setTouchEnd(0);
+    };
+
     const getTransformStyle = () => {
-        // Gap is 30px hardcoded in CSS
         if (isMobile) {
-            return `translateX(calc(-${currentIndex} * (80vw + 30px)))`;
+            return `translateX(calc(-${currentIndex} * 100vw))`;
         }
         return `translateX(calc(-${currentIndex} * (40vw + 30px)))`;
     };
 
     return (
-        <div className="projects-section">
+        <div className="projects-section" id="projects">
             <div className="projects-header-container">
                 <h2 className="projects-header">
                     Our finest<br />
@@ -103,29 +129,36 @@ const ProjectsSection = () => {
 
             <div className="projects-content-wrapper">
                 <div className="project-nav">
-                    <button className="p-nav-btn" onClick={handlePrev}>
-                        <img src={leftArrow} alt="Previous" className="nav-arrow-icon" />
+                    <button className="p-nav-btn" onClick={handlePrev} aria-label="Previous Project">
+                        <img src={leftArrow} alt="" className="nav-arrow-icon" />
                     </button>
-                    <button className="p-nav-btn" onClick={handleNext}>
-                        <img src={rightArrow} alt="Next" className="nav-arrow-icon" />
+                    <button className="p-nav-btn" onClick={handleNext} aria-label="Next Project">
+                        <img src={rightArrow} alt="" className="nav-arrow-icon" />
                     </button>
                 </div>
 
-
-
-                <div className="projects-carousel">
+                <div className="projects-carousel"
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                >
                     <div
                         className="p-track"
                         ref={trackRef}
                         style={{
                             transform: getTransformStyle(),
-                            transition: isTransitioning ? 'transform 0.5s ease-out' : 'none'
+                            transition: isTransitioning ? 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)' : 'none'
                         }}
                     >
                         {/* Map 3 sets of items */}
                         {DISPLAY_ITEMS.map((item, index) => (
-                            <div className="p-item" key={`${item.id}-global-${index}`}>
-                                <img src={item.img} alt={item.name} />
+                            <div className="p-item" key={`proj-${item.id}-${index}`}>
+                                <div className="p-img-container">
+                                    <img src={item.img} alt={item.name} loading="lazy" />
+                                    <div className="p-item-overlay">
+                                        <span>{item.name}</span>
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>

@@ -281,6 +281,7 @@
 @media (max-width: 1024px) {
     .checkout-container {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
 
     .summary-card {
@@ -290,18 +291,49 @@
 
 @media (max-width: 768px) {
     .checkout-page {
-        padding: 140px 20px 60px;
+        padding: 120px 20px 60px;
+    }
+
+    .checkout-header h1 {
+        font-size: 32px;
+    }
+
+    .checkout-section {
+        padding: 20px;
     }
 
     .form-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
 
     .form-group.full-width {
         grid-column: span 1;
     }
 
-    .checkout-header h1 {
-        font-size: 32px;
+    .payment-options {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .submit-order-btn {
+        padding: 16px;
+        font-size: 18px;
+        position: sticky;
+        bottom: 20px;
+        box-shadow: 0 10px 30px rgba(236, 78, 21, 0.3);
+        z-index: 100;
+    }
+
+    .checkout-success-container {
+        padding: 150px 20px;
+    }
+
+    .success-content h1 {
+        font-size: 28px;
+    }
+
+    .success-content p {
+        font-size: 16px;
     }
 }

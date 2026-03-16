@@ -22,7 +22,8 @@
     font-size: 50px;
     line-height: 1.1;
     font-weight: 400;
-    width: 600px;
+    max-width: 600px;
+    width: 100%;
 }
 
 .projects-header strong {
@@ -102,43 +103,97 @@
     flex-shrink: 0;
 }
 
+.p-img-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px; /* Subtle rounding */
+}
+
 .p-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Aspect ratio preserved? */
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.p-item:hover img {
+    transform: scale(1.05); /* Soft zoom on hover */
+}
+
+.p-item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: flex-end;
+}
+
+.p-item:hover .p-item-overlay {
+    opacity: 1;
+}
+
+.p-item-overlay span {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
     .projects-section {
-        padding: 50px 20px;
+        padding: 60px 20px 40px 20px;
         height: auto;
         min-height: 100vh;
     }
 
     .projects-header-container {
-        padding-right: 0;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
     }
 
     .projects-header {
-        font-size: 36px;
+        font-size: clamp(32px, 8vw, 42px); /* Responsive font size */
+        width: 100%;
     }
 
     .p-item {
-        height: 50vh;
-        min-width: 80vw;
-        /* Mobile: Show 1 and a peek */
+        height: 60vh;
+        width: calc(100vw - 40px); /* Fill the screen minus the 20px+20px padding */
+        min-width: calc(100vw - 40px);
+        margin-right: 40px; /* Gap + balance to make the total step exactly 100vw */
     }
 
     .projects-content-wrapper {
-        flex-direction: column;
+        flex-direction: column-reverse; /* Put arrows below on mobile for easier thumb access */
         align-items: flex-start;
     }
 
     .project-nav {
         margin-right: 0;
-        margin-bottom: 30px;
+        margin-top: 40px;
+        margin-bottom: 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .p-nav-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .p-item-overlay {
+        opacity: 1; /* Always show text on mobile since hover is unreliable */
+        padding: 20px;
+    }
+
+    .p-item-overlay span {
+        font-size: 14px;
     }
 }

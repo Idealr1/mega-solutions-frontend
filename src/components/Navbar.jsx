@@ -69,7 +69,13 @@ const Navbar = () => {
           <Link to="/contact" className="nav-link" onClick={toggleMenu}>contact us</Link>
         </div>
         <div className="mobile-menu-actions">
-          <Link to="/account" className="action-icon" onClick={toggleMenu}><User size={24} /></Link>
+          <Link 
+            to={user ? (user.role === 'admin' ? '/admin' : user.role === 'collaborator' ? '/collaborator' : '/dashboard') : '/login'} 
+            className="action-icon" 
+            onClick={toggleMenu}
+          >
+            <User size={24} />
+          </Link>
           <div className="action-icon-wrapper" onClick={() => { openWishlist(); toggleMenu(); }}>
             <Heart size={24} className="action-icon" />
             {wishlist.length > 0 && <span className="nav-badge">{wishlist.length}</span>}

@@ -136,6 +136,11 @@ const UserDashboard = () => {
                         <li className={activeTab === 'orders' ? 'active' : ''} onClick={() => setActiveTab('orders')}>My Orders</li>
                         <li className={activeTab === 'addresses' ? 'active' : ''} onClick={() => setActiveTab('addresses')}>Address Book</li>
                         <li className={activeTab === 'settings' ? 'active' : ''} onClick={() => setActiveTab('settings')}>Account Settings</li>
+                        <li className="mobile-only-logout" onClick={() => {
+                            if (window.confirm('Are you sure you want to logout?')) {
+                                window.location.href = '/login'; // Or use logout() from context if available here
+                            }
+                        }}>Logout</li>
                     </ul>
                 </div>
 
