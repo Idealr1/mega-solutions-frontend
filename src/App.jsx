@@ -32,6 +32,7 @@ import AdminCategories from './components/admin/AdminCategories';
 import AdminInquiries from './components/admin/AdminInquiries';
 import AdminGallery from './components/admin/AdminGallery';
 import AdminGalleryForm from './components/admin/AdminGalleryForm';
+import AdminSubscribers from './components/admin/AdminSubscribers';
 import CollaboratorDashboard from './components/collaborator/CollaboratorDashboard';
 import CheckoutPage from './components/CheckoutPage';
 import CollaboratorLayout from './components/collaborator/CollaboratorLayout';
@@ -122,6 +123,7 @@ function App() {
             <Route path="gallery" element={<AdminGallery />} />
             <Route path="gallery/new" element={<AdminGalleryForm />} />
             <Route path="gallery/:id/edit" element={<AdminGalleryForm />} />
+            <Route path="subscribers" element={<AdminSubscribers />} />
           </Route>
         </Routes>
       </CartProvider>

@@ -16,7 +16,7 @@ const AdminInquiries = () => {
 
     const fetchInquiries = async () => {
         try {
-            const response = await api.get('/contact'); // Assuming GET /contact returns inquiries
+            const response = await api.get('/contacts'); // Fixed to match plural backend endpoint 
             setInquiries(response.data.data || response.data || []);
         } catch (error) {
             console.error('Failed to fetch inquiries:', error);
@@ -50,7 +50,7 @@ const AdminInquiries = () => {
         try {
             await api.post('/bulk-delete', {
                 ids: selectedIds,
-                type: 'inquiries'
+                type: 'contacts'
             });
             setInquiries(prev => prev.filter(item => !selectedIds.includes(item.id)));
             setSelectedIds([]);

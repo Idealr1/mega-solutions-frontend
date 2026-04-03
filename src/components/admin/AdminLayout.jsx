@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { LayoutDashboard, Users, ShoppingBag, Package, LogOut, FileText, Folder, MessageSquare, Image, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Users, ShoppingBag, Package, LogOut, FileText, Folder, MessageSquare, Image, Menu, X, Mail } from 'lucide-react';
 import './AdminLayout.css';
 import './AdminCommon.css';
 
@@ -58,6 +58,9 @@ const AdminLayout = () => {
                     </Link>
                     <Link to="/admin/inquiries" className="admin-nav-item">
                         <MessageSquare size={20} /> Inquiries
+                    </Link>
+                    <Link to="/admin/subscribers" className="admin-nav-item">
+                        <Mail size={20} /> Subscribers
                     </Link>
                     <Link to="/admin/subaccounts" className="admin-nav-item">
                         <Users size={20} /> Subaccounts

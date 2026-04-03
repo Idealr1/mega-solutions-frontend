@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import api from '../services/api';
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
 // Importing specific SVGs as requested
 import locationIcon from '../assets/images/location.svg';
@@ -9,6 +10,38 @@ import SubscribeSection from './SubscribeSection';
 import './ContactPage.css';
 
 const ContactPage = () => {
+    const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [modal, setModal] = useState({ isOpen: false, type: '', title: '', message: '' });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        try {
+            await api.post('/contact', { ...formData, source: 'contact' });
+            setModal({
+                isOpen: true,
+                type: 'success',
+                title: 'Message Sent!',
+                message: 'Thank you for reaching out! Our team will get back to you shortly.'
+            });
+            setFormData({ name: '', email: '', phone: '', message: '' });
+        } catch (error) {
+            setModal({
+                isOpen: true,
+                type: 'error',
+                title: 'Submission Failed',
+                message: error.response?.data?.message || 'Something went wrong. Please try again.'
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <div className="contact-page">
             <div className="contact-header-section">
@@ -22,21 +55,23 @@ const ContactPage = () => {
             <div className="contact-container">
                 {/* Left Side - Form (60%) */}
                 <div className="contact-form-wrapper">
-                    <form className="contact-form">
+                    <form className="contact-form" onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <input type="text" placeholder="Name*" required className="contact-input" />
+                            <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name*" required className="contact-input" />
                         </div>
                         <div className="form-group">
-                            <input type="email" placeholder="Email*" required className="contact-input" />
+                            <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email*" required className="contact-input" />
                         </div>
                         <div className="form-group">
-                            <input type="tel" placeholder="Phone Number*" required className="contact-input" />
+                            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="Phone Number" className="contact-input" />
                         </div>
                         <div className="form-group">
-                            <textarea placeholder="Your Message" rows="4" className="contact-input contact-textarea"></textarea>
+                            <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Your Message" required rows="4" className="contact-input contact-textarea"></textarea>
                         </div>
 
-                        <button type="submit" className="contact-submit-btn">send</button>
+                        <button type="submit" className="contact-submit-btn" disabled={isSubmitting}>
+                            {isSubmitting ? 'Sending...' : 'send'}
+                        </button>
                     </form>
                 </div>
 
@@ -100,7 +135,21 @@ const ContactPage = () => {
                 ></iframe>
             </div>
 
-            <SubscribeSection />
+            {/* Custom Modal */}
+            {modal.isOpen && (
+                <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 99999 }}>
+                    <div style={{ background: '#fff', padding: '40px', borderRadius: '8px', maxWidth: '400px', width: '90%', textAlign: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }}>
+                        <div style={{ fontSize: '48px', color: modal.type === 'success' ? '#2ecc71' : '#f44336', marginBottom: '16px' }}>
+                            {modal.type === 'success' ? '✓' : '✖'}
+                        </div>
+                        <h2 style={{ fontSize: '24px', fontWeight: '600', marginBottom: '10px', color: '#333' }}>{modal.title}</h2>
+                        <p style={{ color: '#666', lineHeight: '1.5', marginBottom: '24px' }}>{modal.message}</p>
+                        <button onClick={() => setModal({ ...modal, isOpen: false })} style={{ background: '#EC4E15', color: '#fff', border: 'none', padding: '10px 30px', fontSize: '16px', cursor: 'pointer', outline: 'none' }}>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

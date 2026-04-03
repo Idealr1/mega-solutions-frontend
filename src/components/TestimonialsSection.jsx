@@ -1,33 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './TestimonialsSection.css';
-import testimonialImg from '../assets/images/testimonial.png';
 import rightArrow from '../assets/images/right.svg';
 import leftArrow from '../assets/images/left.svg';
+
+const userIconUrl = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E";
 
 const TESTIMONIALS = [
     {
         id: 1,
-        img: testimonialImg,
-        name: 'Cassandra Salazar',
-        text: 'Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia'
+        img: userIconUrl,
+        name: 'Sarah Jenkins',
+        text: 'Mega Solution completely transformed our kitchen. The quality of the quartz and the attention to detail during installation were beyond our expectations. Guests literally stop and stare when they walk in!'
     },
     {
         id: 2,
-        img: testimonialImg,
-        name: 'Jimmie Humphrey',
-        text: 'Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere.'
+        img: userIconUrl,
+        name: 'Michael Thorne',
+        text: 'I was skeptical about replacing our old countertops, but the team made the process so seamless. We went with a stunning granite piece, and it feels like we upgraded the entire house, not just the surfaces.'
     },
     {
         id: 3,
-        img: testimonialImg,
-        name: 'Alice Griffith',
-        text: 'Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed.'
+        img: userIconUrl,
+        name: 'Emily Chen',
+        text: 'The craftsmanship here is unparalleled. From selecting the perfect slab of marble to the final polished edges, every step was handled with pure professionalism. Our master bathroom looks like a luxury spa.'
     },
-    // Use 3 unique, but loop them. 
-    // To make infinite logic work with 3 items shown? 
-    // Screenshot shows 3 cards visible.
-    // We should duplicate plenty to ensure smooth scrolling.
 ];
 
 const TestimonialsSection = () => {
