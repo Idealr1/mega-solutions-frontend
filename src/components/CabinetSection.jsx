@@ -219,9 +219,12 @@ const CabinetSection = () => {
     return (
         <div className="cabinet-section">
             <h2 className="cabinet-header">
-                Elevate Your Space<br />
-                with <strong>Our Cabinets</strong>
+                Find your<br />
+                <strong>perfect cabinets</strong>
             </h2>
+            <p className="cabinet-sub-header" style={{textAlign: 'center', marginBottom: '20px', fontSize: '18px', color: '#555'}}>
+                Explore what everyone’s upgrading to &rarr;
+            </p>
 
             <div className="cabinet-categories">
                 {categories.map((cat) => (

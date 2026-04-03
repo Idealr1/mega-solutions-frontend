@@ -9,26 +9,26 @@ const FEATURES = [
     {
         id: 1,
         icon: fastIcon,
-        title: 'Fast Shippin',
-        desc: 'Pulvinar vivamus fringilla lacus nec metus bibendum egestas.'
+        title: 'Fast Shipping',
+        desc: 'Get your cabinets delivered quickly and safely, no waiting, no hassle.'
     },
     {
         id: 2,
         icon: expertIcon,
         title: 'Expert Setup',
-        desc: 'In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna'
+        desc: 'Professional installation ensures your cabinets look perfect from day one.'
     },
     {
         id: 3,
         icon: premiumIcon,
         title: 'Premium Materials',
-        desc: 'In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna'
+        desc: 'Built to last with high-quality materials that combine beauty and durability.'
     },
     {
         id: 4,
         icon: onlineIcon,
         title: 'Online Support',
-        desc: 'In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna'
+        desc: 'Our team is always ready to help, advice, guidance, or troubleshooting, anytime.'
     }
 ];
 

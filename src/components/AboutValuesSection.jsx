@@ -17,7 +17,21 @@ const AboutValuesSection = () => {
             </div>
 
             <div className="values-content-container">
-                {/* Row 1 */}
+                <div className="values-row">
+                    <div className="values-left">
+                        <h2 className="values-header">
+                            Crafting spaces <br />
+                            where <strong>life happens</strong>
+                        </h2>
+                        <div className="values-underline white-line"></div>
+                    </div>
+                    <div className="values-right">
+                        <p className="values-desc">
+                            At Mega Solution, we don’t just build cabinets, we create the backdrop for life’s best memories.
+                        </p>
+                    </div>
+                </div>
+
                 <div className="values-row">
                     <div className="values-left">
                         <h2 className="values-header">
@@ -28,12 +42,11 @@ const AboutValuesSection = () => {
                     </div>
                     <div className="values-right">
                         <p className="values-desc">
-                            We design and build custom cabinetry that brings elegance and efficiency to modern living. Our mission is to merge clean aesthetics with practical function — so every space works better and looks better.
+                            We design and build custom cabinetry that brings elegance and efficiency to modern living. Our mission is to merge clean aesthetics with practical function, so every space works better and looks better.
                         </p>
                     </div>
                 </div>
 
-                {/* Row 2 */}
                 <div className="values-row">
                     <div className="values-left">
                         <h2 className="values-header">
@@ -44,7 +57,7 @@ const AboutValuesSection = () => {
                     </div>
                     <div className="values-right">
                         <p className="values-desc">
-                            We aim to inspire a new standard in cabinetry — one where thoughtful design and seamless execution come together to transform how people live, work, and feel in their homes.
+                            We aim to inspire a new standard in cabinetry, one where thoughtful design and seamless execution come together to transform how people live, work, and feel in their homes.
                         </p>
                     </div>
                 </div>

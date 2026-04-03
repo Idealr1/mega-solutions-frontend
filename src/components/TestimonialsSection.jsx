@@ -111,12 +111,11 @@ const TestimonialsSection = () => {
         <div className="testimonials-section">
             <div className="testimonials-top-row">
                 <h2 className="testimonials-header">
-                    What <strong>Our Customers</strong><br />
-                    Say About Us
+                    What our customers <br />
+                    <strong>say about us?</strong>
                 </h2>
                 <p className="testimonials-subtext">
-                    Ad litora torquent per conubia nostra <br />
-                    inceptos himenaeos.
+                    These folks thought their kitchens were fine… until Mega Solution turned them into jaw-dropping spaces.
                 </p>
             </div>
 

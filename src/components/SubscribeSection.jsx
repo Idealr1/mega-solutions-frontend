@@ -7,10 +7,10 @@ const SubscribeSection = () => {
             <div className="subscribe-content">
                 <h2 className="subscribe-header">
                     <strong>Subscribe</strong> to <br />
-                    Our Newsletter!
+                    our newsletter!
                 </h2>
                 <p className="subscribe-subtext">
-                    Ad litora torquent per conubia
+                    Get the latest tips, trends, and Mega deals straight to your inbox! <br /> Cabinetry that transforms rooms and turns everyday into extraordinary.
                 </p>
 
                 <div className="subscribe-form">

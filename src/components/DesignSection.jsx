@@ -17,12 +17,10 @@ const DesignSection = () => {
                 {/* Left Side: Text & Controls */}
                 <div className="design-left">
                     <h2 className="design-header">
-                        <strong>Design it</strong> where<br />
-                        it matters most
+                        <strong>Visualize It</strong> Before You Build It
                     </h2>
                     <p className="design-desc">
-                        See exactly how our cabinets will look in your home
-                        —just snap, upload, and explore the possibilities.
+                        See exactly how our cabinets will look in your home, just snap, upload, and explore the possibilities.
                     </p>
 
                     <p className="slide-text">Slide to Try</p>

@@ -14,10 +14,10 @@ const AboutPage = () => {
                 <div className="about-left-col">
                     <div className="about-content-wrapper">
                         <h1 className="about-title">
-                            Crafting Spaces with <strong>Purpose</strong>
+                            The Home Everyone <strong>Talks About</strong>
                         </h1>
                         <p className="about-desc">
-                            We design and build custom cabinetry that transforms your space and elevates your everyday living
+                            Yes, we are talking about your future home. For now, those tired, boring cabinets? They’re holding you back. You deserve better. Real beauty. Real strength. Cabinets that make people stop, stare, and ask, “Where’d you get those?” <br/><br/>This isn’t just about looks. It’s about how your home feels. The pride you get walking in every day. The way it makes guests jealous. Stop settling. Start upgrading.
                         </p>
                     </div>
                 </div>
