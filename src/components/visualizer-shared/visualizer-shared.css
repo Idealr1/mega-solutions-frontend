@@ -1,0 +1,179 @@
+/*
+ * Styles for the shared visualizer sub-components (WizardUpload,
+ * DreamingOverlay, VisualizerErrorBoundary). Originally lived in the now-
+ * deleted Visualizer.css. Imported by each shared component so any page
+ * that uses them automatically gets the styling.
+ */
+
+/* --- Reusable action button --- */
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.action-btn:hover {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+}
+.action-btn.secondary {
+    border-color: #EC4E15;
+    color: #EC4E15;
+}
+.action-btn.secondary:hover {
+    background-color: rgba(236, 78, 21, 0.05);
+}
+
+/* --- Wizard upload screen --- */
+.wizard-screen {
+    font-family: 'Poppins', sans-serif;
+    color: #2E368E;
+    position: fixed;
+    inset: 0;
+    background: #f8f9ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.wizard-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 2rem;
+    box-shadow: 0 10px 40px rgba(46, 54, 142, 0.1);
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+}
+
+.wizard-card h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.wizard-card p {
+    color: #667;
+    margin-bottom: 2.5rem;
+}
+
+.upload-dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    border: 2px dashed #ccc;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    background: #fafbff;
+    transition: all 0.3s ease;
+}
+.upload-dropzone:hover {
+    border-color: #2E368E;
+    background: #f0f3ff;
+}
+.upload-dropzone span {
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: #667;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+.wizard-error-container {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+.wizard-error {
+    color: #ec4e15;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* --- "Dreaming" loading overlay --- */
+.dreaming-content {
+    text-align: center;
+}
+.dreaming-loader {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 2rem;
+}
+.dreaming-loader svg {
+    position: absolute;
+    color: #2E368E;
+}
+.sparkle-1 {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: sparkle 1.5s infinite;
+}
+.sparkle-2 {
+    bottom: 10%;
+    left: 10%;
+    animation: sparkle 1.5s infinite 0.5s;
+}
+.sparkle-3 {
+    bottom: 10%;
+    right: 10%;
+    animation: sparkle 1.5s infinite 1s;
+}
+@keyframes sparkle {
+    0%, 100% {
+        transform: scale(0.8) rotate(0);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.5) rotate(180deg);
+        opacity: 1;
+    }
+}
+
+/* --- Error boundary fallback --- */
+.visualizer-error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 32px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+.visualizer-error h3 {
+    color: #dc3545;
+    margin-bottom: 16px;
+}
+.visualizer-error button {
+    padding: 10px 20px;
+    background: #EC4E15;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}

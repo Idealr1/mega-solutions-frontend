@@ -5,7 +5,6 @@ import { useCart } from '../context/CartContext';
 import WizardUpload from './visualizer-shared/WizardUpload';
 import VisualizerErrorBoundary from './visualizer-shared/VisualizerErrorBoundary';
 import './KarrotaVisualizer.css';
-
 /**
  * Karrota Visualizer.
  *
@@ -143,12 +142,12 @@ const KarrotaVisualizer = () => {
         openCart();
     };
 
-    // --- Render: budget bar shown at the top once we have usage data
+    // --- Render: budget bar shown at the top once we have usage data.
+    // Customer-facing copy hides the EUR amount — they only see how many
+    // renders they have left this week.
     const renderBudgetBar = () => {
         if (!usage) return null;
         const pctUsed = Math.min(100, Math.round(((usage.spent_eur || 0) / Math.max(usage.cap_eur || 1, 0.01)) * 100));
-        const left = Number(usage.remaining_eur || 0).toFixed(2);
-        const cap = Number(usage.cap_eur || 0).toFixed(2);
         const renders = usage.estimated_renders_left ?? 0;
         const frozen = usage.is_frozen;
         return (
@@ -162,9 +161,7 @@ const KarrotaVisualizer = () => {
                     <>
                         <Sparkles size={14} />
                         <span>
-                            <strong>€{left}</strong> of €{cap} left this week
-                            {' · '}
-                            <strong>{renders}</strong> render{renders === 1 ? '' : 's'} remaining
+                            <strong>{renders}</strong> render{renders === 1 ? '' : 's'} remaining this week
                         </span>
                         <div className="karrota-budget-bar"><div className="karrota-budget-bar-fill" style={{ width: pctUsed + '%' }} /></div>
                     </>

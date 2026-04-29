@@ -1,4 +1,5 @@
 import React from 'react';
+import './visualizer-shared.css';
 
 /**
  * Shared error boundary for visualizer surfaces. Logs the error and renders

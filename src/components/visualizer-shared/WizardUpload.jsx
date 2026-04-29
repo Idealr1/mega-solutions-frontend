@@ -1,5 +1,6 @@
 import React from 'react';
 import { Upload, ArrowLeft } from 'lucide-react';
+import './visualizer-shared.css';
 
 /**
  * Shared upload step used by Visualizer (wall material) and KarrotaVisualizer

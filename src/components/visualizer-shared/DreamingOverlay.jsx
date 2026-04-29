@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sparkles } from 'lucide-react';
+import './visualizer-shared.css';
 
 /**
  * Shared "analysing your room" loader. Used by both wall-material and
