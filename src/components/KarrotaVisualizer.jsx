@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Loader2, Download, Sparkles, RotateCcw, X, ShoppingCart, Lock, AlertTriangle } from 'lucide-react';
+import { Loader2, Sparkles, RotateCcw, X, ShoppingCart, Lock, AlertTriangle } from 'lucide-react';
 import api from '../services/api';
 import { useCart } from '../context/CartContext';
 import WizardUpload from './visualizer-shared/WizardUpload';
@@ -261,7 +261,13 @@ const KarrotaVisualizer = () => {
                                 <img src={roomImage} alt="Room" className="karrota-room-photo" />
                             )}
                             {aiResult && (
-                                <img src={aiResult.url} alt="Rendered kitchen" className="karrota-ai-overlay" />
+                                <img
+                                    src={aiResult.url}
+                                    alt="Rendered kitchen"
+                                    className="karrota-ai-overlay"
+                                    onContextMenu={(e) => e.preventDefault()}
+                                    draggable={false}
+                                />
                             )}
                             {aiBusy && (
                                 <div className="karrota-busy karrota-busy-large">
@@ -277,9 +283,6 @@ const KarrotaVisualizer = () => {
                                 <button className="karrota-confirm-btn" onClick={() => setShowOrderModal(true)}>
                                     <ShoppingCart size={16} /> Confirm and view materials
                                 </button>
-                                <a className="karrota-reset" href={aiResult.url} target="_blank" rel="noreferrer">
-                                    <Download size={14} /> Open full size
-                                </a>
                             </div>
                         )}
                     </main>
