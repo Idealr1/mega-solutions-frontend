@@ -1,0 +1,455 @@
+/* Karrota Visualizer */
+
+/* --- Budget meter --- */
+.karrota-budget {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 24px;
+    background: #eef2ff;
+    border-bottom: 1px solid #c7d2fe;
+    color: #3730a3;
+    font-size: 13px;
+    font-weight: 500;
+}
+.karrota-budget.is-frozen {
+    background: #fef2f2;
+    border-bottom-color: #fecaca;
+    color: #991b1b;
+}
+.karrota-budget.is-empty {
+    background: #fef3c7;
+    border-bottom-color: #fcd34d;
+    color: #78350f;
+}
+.karrota-budget strong { font-weight: 700; }
+.karrota-budget-bar {
+    flex: 1;
+    max-width: 240px;
+    height: 6px;
+    background: #c7d2fe;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-left: 8px;
+}
+.karrota-budget-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #a855f7);
+    transition: width 0.3s;
+}
+
+/* --- Cabinet thumbnail with colour swatch --- */
+.karrota-cabinet-thumb-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+.karrota-cabinet-swatch {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    background: #ddd;
+}
+
+/* --- "Confirm and view materials" CTA --- */
+.karrota-confirm-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #b8860b, #d4a017);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(184, 134, 11, 0.35);
+    font-size: 14px;
+}
+.karrota-confirm-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(184, 134, 11, 0.5);
+}
+.karrota-confirm-btn--small { padding: 6px 12px; font-size: 13px; }
+
+/* --- Order modal --- */
+.karrota-order-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+.karrota-order-modal-inner {
+    background: #fff;
+    border-radius: 12px;
+    max-width: 720px;
+    width: 100%;
+    max-height: 90vh;
+    overflow: auto;
+    position: relative;
+    padding: 32px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+.karrota-ai-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    padding: 4px;
+}
+.karrota-ai-close:hover { color: #222; }
+.karrota-order-header {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+.karrota-order-thumb {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+.karrota-order-header h2 { margin: 0 0 8px; }
+.karrota-order-color {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #555;
+    font-size: 13px;
+    margin: 0 0 8px;
+}
+.karrota-order-color .karrota-cabinet-swatch {
+    position: static;
+    width: 18px;
+    height: 18px;
+}
+.karrota-order-desc { color: #666; font-size: 13px; line-height: 1.5; margin: 0; }
+.karrota-order-section { margin: 0 0 12px; font-size: 16px; color: #1a1a1a; }
+.karrota-variant-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.karrota-variant-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.karrota-variant-list li:last-child { border-bottom: none; }
+.karrota-variant-info strong { display: block; color: #1a1a1a; }
+.karrota-variant-info small { color: #999; font-family: monospace; font-size: 11px; }
+.karrota-variant-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+.karrota-variant-price { font-weight: 700; color: #b8860b; min-width: 70px; text-align: right; }
+.karrota-no-variants { padding: 16px; color: #888; text-align: center; font-style: italic; }
+
+
+
+.karrota-visualizer {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    background: #fafaf9;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+}
+
+.karrota-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #fff;
+    gap: 12px;
+}
+
+.karrota-back,
+.karrota-reset {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid #d4d4d4;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+}
+
+.karrota-back:hover,
+.karrota-reset:hover:not(:disabled) {
+    background: #f5f5f4;
+}
+
+.karrota-status {
+    flex: 1;
+    text-align: center;
+    color: #555;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.karrota-body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    min-height: 0;
+}
+
+.karrota-sidebar {
+    background: #fff;
+    border-right: 1px solid #e5e5e5;
+    padding: 16px;
+    overflow-y: auto;
+    max-height: calc(100vh - 130px);
+}
+
+.karrota-sidebar h3 {
+    margin: 0 0 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.karrota-empty {
+    color: #888;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.karrota-cabinet-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.karrota-cabinet-list li {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    align-items: center;
+}
+
+.karrota-cabinet-list li:hover:not(.is-disabled) {
+    background: #f5f5f4;
+    border-color: #b8860b;
+    transform: translateY(-1px);
+}
+
+.karrota-cabinet-list li.selected {
+    border-color: #6366f1;
+    background: #eef2ff;
+}
+
+.karrota-cabinet-list li.is-disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.karrota-cabinet-list img,
+.karrota-thumb-placeholder {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: #efefef;
+    flex-shrink: 0;
+}
+
+.karrota-cabinet-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+}
+
+.karrota-cabinet-meta strong {
+    font-size: 14px;
+    color: #1a1a1a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.karrota-cabinet-meta span {
+    font-size: 13px;
+    color: #b8860b;
+    font-weight: 600;
+}
+
+.karrota-cabinet-meta small {
+    font-size: 11px;
+    color: #888;
+}
+
+.karrota-cabinet-loader {
+    color: #6366f1;
+    margin-left: 4px;
+}
+
+.karrota-canvas {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    overflow: hidden;
+}
+
+.karrota-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    white-space: pre-wrap;
+}
+
+.karrota-canvas-inner {
+    position: relative;
+    flex: 1;
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+.karrota-result-stage .karrota-room-photo,
+.karrota-result-stage .karrota-ai-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.karrota-result-stage .karrota-room-photo { z-index: 0; }
+.karrota-result-stage .karrota-ai-overlay {
+    z-index: 1;
+    animation: karrota-fadein 0.5s ease-out;
+}
+
+@keyframes karrota-fadein {
+    from { opacity: 0; transform: scale(0.99); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.karrota-busy {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    z-index: 5;
+}
+
+.karrota-busy-large {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+}
+
+.karrota-busy-large h3 {
+    margin: 12px 0 4px;
+    font-size: 22px;
+}
+
+.karrota-busy-hint {
+    color: #d1d5db;
+    font-size: 13px;
+    margin: 0;
+}
+
+.karrota-spin {
+    animation: karrota-spin 1s linear infinite;
+}
+
+@keyframes karrota-spin {
+    to { transform: rotate(360deg); }
+}
+
+.karrota-result-actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.karrota-ai-prompt-debug {
+    flex: 1;
+    color: #555;
+    font-size: 12px;
+    background: #f5f5f4;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.karrota-ai-prompt-debug summary {
+    cursor: pointer;
+    color: #6366f1;
+    user-select: none;
+}
+
+.karrota-ai-prompt-debug p {
+    margin-top: 8px;
+    line-height: 1.5;
+    color: #333;
+}
+
+@media (max-width: 900px) {
+    .karrota-body {
+        grid-template-columns: 1fr;
+    }
+    .karrota-sidebar {
+        max-height: 280px;
+        border-right: none;
+        border-bottom: 1px solid #e5e5e5;
+    }
+}

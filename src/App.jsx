@@ -15,7 +15,7 @@ import BlogPostPage from './components/BlogPostPage';
 import B2BPage from './components/B2BPage';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
-import Visualizer from './components/Visualizer';
+import KarrotaVisualizer from './components/KarrotaVisualizer';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminLayout from './components/admin/AdminLayout';
 import AdminDashboard from './components/admin/AdminDashboard';
@@ -33,6 +33,7 @@ import AdminInquiries from './components/admin/AdminInquiries';
 import AdminGallery from './components/admin/AdminGallery';
 import AdminGalleryForm from './components/admin/AdminGalleryForm';
 import AdminSubscribers from './components/admin/AdminSubscribers';
+import AdminVisualizerUsage from './components/admin/AdminVisualizerUsage';
 import CollaboratorDashboard from './components/collaborator/CollaboratorDashboard';
 import CheckoutPage from './components/CheckoutPage';
 import CollaboratorLayout from './components/collaborator/CollaboratorLayout';
@@ -71,7 +72,11 @@ function App() {
             <Route path="/b2b" element={<B2BPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<RegisterPage />} />
-            <Route path="/visualizer" element={<Visualizer />} />
+            <Route path="/karrota-visualizer" element={
+              <ProtectedRoute>
+                <KarrotaVisualizer />
+              </ProtectedRoute>
+            } />
 
             {/* User Dashboard also gets the main Navbar/Footer */}
             <Route path="/dashboard" element={
@@ -124,6 +129,7 @@ function App() {
             <Route path="gallery/new" element={<AdminGalleryForm />} />
             <Route path="gallery/:id/edit" element={<AdminGalleryForm />} />
             <Route path="subscribers" element={<AdminSubscribers />} />
+            <Route path="visualizer" element={<AdminVisualizerUsage />} />
           </Route>
         </Routes>
       </CartProvider>

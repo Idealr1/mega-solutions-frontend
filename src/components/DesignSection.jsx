@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './DesignSection.css';
 import imageRoom from '../assets/images/imageroom.png';
 import imageAfter from '../assets/images/imageafter.png';
@@ -6,6 +7,7 @@ import imageAfter from '../assets/images/imageafter.png';
 const DesignSection = () => {
     // 50% default to show half/half
     const [sliderValue, setSliderValue] = useState(50);
+    const navigate = useNavigate();
 
     const handleSliderChange = (e) => {
         setSliderValue(e.target.value);
@@ -36,7 +38,7 @@ const DesignSection = () => {
                         />
                     </div>
 
-                    <button className="generate-btn">
+                    <button className="generate-btn" onClick={() => navigate('/karrota-visualizer')}>
                         generate
                     </button>
                 </div>

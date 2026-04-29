@@ -15,6 +15,11 @@ const AdminProductForm = () => {
         category_id: '',
         description: '',
         is_active: 1,
+        // Karrota AI Visualizer colour. Hex like "#616361" + optional human label.
+        // When set, the visualizer's AI generator uses this exact colour
+        // instead of trying to auto-detect from the thumbnail.
+        color_hex: '#FAFAF9',
+        color_name: '',
         spec: {
             wood_species: '',
             door_style: '',
@@ -105,6 +110,8 @@ const AdminProductForm = () => {
                 category_id: product.category?.id || product.category_id || '',
                 description: product.description || '',
                 is_active: product.is_active ? 1 : 0,
+                color_hex: product.color_hex || '#FAFAF9',
+                color_name: product.color_name || '',
                 spec: {
                     wood_species: parsedSpec?.wood_species || '',
                     door_style: parsedSpec?.door_style || '',
@@ -339,6 +346,9 @@ const AdminProductForm = () => {
         data.append('is_active', formData.is_active);
         if (formData.category_id) data.append('category_id', formData.category_id);
         if (formData.description) data.append('description', formData.description);
+        // Karrota visualizer colour
+        if (formData.color_hex) data.append('color_hex', formData.color_hex);
+        if (formData.color_name) data.append('color_name', formData.color_name);
 
         // Product-level pricing from first variant (Fallback for listing)
         const firstVariant = variantGroups[0]?.variants[0];
@@ -511,6 +521,45 @@ const AdminProductForm = () => {
                                 placeholder="Premium shaker style cabinet with origami white finish..."
                                 className="modern-textarea"
                             ></textarea>
+                        </div>
+
+                        {/* Karrota AI Visualizer colour — locks the colour the
+                            AI uses to render this cabinet in customer rooms. */}
+                        <div className="form-group">
+                            <label>Visualizer Colour</label>
+                            <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+                                <input
+                                    type="color"
+                                    name="color_hex"
+                                    value={formData.color_hex || '#FAFAF9'}
+                                    onChange={handleChange}
+                                    style={{ width: 60, height: 40, padding: 2, border: '1px solid #ccc', borderRadius: 4, cursor: 'pointer' }}
+                                />
+                                <input
+                                    type="text"
+                                    name="color_hex"
+                                    value={formData.color_hex || ''}
+                                    onChange={handleChange}
+                                    placeholder="#FAFAF9"
+                                    pattern="^#[0-9A-Fa-f]{6}$"
+                                    style={{ width: 110, fontFamily: 'monospace' }}
+                                    className="modern-input"
+                                />
+                                <input
+                                    type="text"
+                                    name="color_name"
+                                    value={formData.color_name || ''}
+                                    onChange={handleChange}
+                                    placeholder="e.g. dark charcoal gray"
+                                    className="modern-input"
+                                    style={{ flex: 1, minWidth: 200 }}
+                                />
+                            </div>
+                            <small style={{ color: '#666', marginTop: 4, display: 'block' }}>
+                                The exact colour the AI Visualizer will use when generating
+                                a kitchen render with this cabinet. Pick from the swatch or
+                                type a hex. The label is what you'd call it in conversation.
+                            </small>
                         </div>
                     </div>
 

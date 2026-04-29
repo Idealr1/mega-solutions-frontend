@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { LayoutDashboard, Users, ShoppingBag, Package, LogOut, FileText, Folder, MessageSquare, Image, Menu, X, Mail } from 'lucide-react';
+import { LayoutDashboard, Users, ShoppingBag, Package, LogOut, FileText, Folder, MessageSquare, Image, Menu, X, Mail, Sparkles } from 'lucide-react';
 import './AdminLayout.css';
 import './AdminCommon.css';
 
@@ -70,6 +70,9 @@ const AdminLayout = () => {
                     </Link>
                     <Link to="/admin/gallery" className="admin-nav-item">
                         <Image size={20} /> Gallery
+                    </Link>
+                    <Link to="/admin/visualizer" className="admin-nav-item">
+                        <Sparkles size={20} /> Visualizer Usage
                     </Link>
                 </nav>
 
