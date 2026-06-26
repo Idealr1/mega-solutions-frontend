@@ -1,4 +1,4 @@
-/* Stones homepage section — mirrors CabinetSection visual rhythm */
+/* Stones homepage section — mirrors CabinetSection's 2-left/active/2-right rhythm */
 .stone-section {
     min-height: 100vh;
     background-color: #efeae3;
@@ -52,21 +52,22 @@
     border-bottom: 2px solid #EC4E15;
 }
 
+/* Carousel container — the track translates inside this; we hide overflow
+   on the section, not here, so the off-screen cards still get laid out. */
 .stone-carousel-wrapper {
     width: 100%;
-    height: 500px;
     display: flex;
     align-items: center;
     position: relative;
-    overflow: hidden;
 }
 .stone-carousel-track {
     display: flex;
     align-items: center;
     gap: 30px;
     width: max-content;
-    padding-left: 50px;
+    /* transform is set inline by JS */
 }
+
 .stone-loader, .stone-empty {
     width: 100vw;
     text-align: center;
@@ -74,25 +75,21 @@
     padding: 40px;
 }
 
+/* Individual card — height/width is set inline by JS so it responds to
+   active state + viewport scaling. */
 .stone-card {
-    width: 380px;
-    height: 440px;
-    border-radius: 12px;
     background: #fff;
+    border-radius: 4px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    cursor: pointer;
-    opacity: 0.5;
-    transform: scale(0.92);
-    transition: opacity 0.4s, transform 0.4s;
+    transition: opacity 0.4s, height 0.4s, width 0.4s, box-shadow 0.4s;
     flex-shrink: 0;
 }
 .stone-card.active {
-    opacity: 1;
-    transform: scale(1.05);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
 }
 .stone-card-image {
     flex: 1;
@@ -116,17 +113,18 @@
 }
 .stone-card-body {
     background: #fff;
-    padding: 14px 20px;
+    padding: 12px 20px;
+    border-top: 1px solid #f0f0f0;
 }
 .stone-card-body h4 {
     margin: 0 0 4px;
-    font-size: 18px;
+    font-size: 16px;
     color: #1a1a1a;
     font-weight: 600;
 }
 .stone-card-body small {
     color: #888;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .stone-carousel-controls {
