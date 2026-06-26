@@ -1,0 +1,152 @@
+/* Stones listing tab on /products */
+.stones-listing {
+    padding: 0 40px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: 'Poppins', sans-serif;
+}
+
+.stones-filter-bar {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.stones-filter-btn {
+    background: #fff;
+    border: 1px solid #d4d4d4;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.stones-filter-btn:hover { border-color: #EC4E15; color: #EC4E15; }
+.stones-filter-btn.active {
+    background: #EC4E15;
+    color: #fff;
+    border-color: #EC4E15;
+    font-weight: 600;
+}
+
+.stones-loading, .stones-empty {
+    text-align: center;
+    padding: 80px;
+    color: #888;
+}
+
+.stones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px;
+}
+
+.stone-tile {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #efefef;
+}
+.stone-tile:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.stone-tile-image {
+    height: 240px;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.stone-tile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.stone-tile-fallback {
+    color: #fff;
+    text-align: center;
+    padding: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+}
+
+.stone-tile-body {
+    padding: 18px 20px 22px;
+}
+.stone-tile-body h3 {
+    margin: 0 0 4px;
+    font-size: 18px;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+.stone-tile-cat {
+    color: #EC4E15;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 12px;
+    font-weight: 600;
+}
+.stone-tile-specs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    color: #444;
+}
+.stone-tile-specs li {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-top: 1px solid #f0f0f0;
+}
+.stone-tile-specs li span {
+    color: #999;
+    font-weight: 500;
+}
+
+.stone-tile-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+}
+.stone-tile-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #EC4E15;
+}
+.stone-tile-price small {
+    color: #999;
+    font-weight: 400;
+    font-size: 11px;
+    margin-left: 2px;
+}
+.stone-tile-cart-btn {
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.stone-tile-cart-btn:hover { background: #EC4E15; }
+
+.spin { animation: stones-spin 1s linear infinite; }
+@keyframes stones-spin { to { transform: rotate(360deg); } }

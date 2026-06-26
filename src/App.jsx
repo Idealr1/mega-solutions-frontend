@@ -16,6 +16,7 @@ import B2BPage from './components/B2BPage';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
 import KarrotaVisualizer from './components/KarrotaVisualizer';
+import StoneDetailsPage from './components/StoneDetailsPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminLayout from './components/admin/AdminLayout';
 import AdminDashboard from './components/admin/AdminDashboard';
@@ -63,6 +64,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/product/:id" element={<ProductDetailsPage />} />
+            <Route path="/stones/:slug" element={<StoneDetailsPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/contact" element={<ContactPage />} />

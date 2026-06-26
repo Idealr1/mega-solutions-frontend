@@ -12,7 +12,7 @@ const Footer = () => {
                 <div className="footer-col footer-left">
                     <img src={logoFooter} alt="Mega Solution" className="footer-logo" />
                     <p className="footer-desc">
-                        Ut hendrerit semper vel class aptent taciti sociosqu
+                        Premium stone surfaces and custom cabinetry for kitchens, bathrooms, and homes that stand out.
                     </p>
                 </div>
 
@@ -34,9 +34,16 @@ const Footer = () => {
                 <div className="footer-col footer-right">
                     <h3 className="footer-heading">Contact</h3>
                     <div className="footer-contact-info">
-                        <p>Lorem ipsum dolor,<br />sit amet consectetur 108</p>
-                        <p>+1000000-0000</p>
-                        <p>info@megasolution.com</p>
+                        <p>
+                            2040 Steel Dr, Suite A, E &amp; D<br />
+                            Tucker, GA 30084
+                        </p>
+                        <p>
+                            <a href="tel:+14702410524">+1 (470) 241-0524</a>
+                        </p>
+                        <p>
+                            <a href="mailto:info@tkstoneandcabinets.com">info@tkstoneandcabinets.com</a>
+                        </p>
                     </div>
                     <div className="footer-socials">
                         <Facebook size={24} />

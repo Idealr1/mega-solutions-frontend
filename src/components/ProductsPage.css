@@ -102,3 +102,30 @@
         /* Keeping generic unless specified. */
     }
 }
+/* Cabinets / Stones tabs */
+.products-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin: 40px auto 24px;
+    border-bottom: 1px solid #e5e5e5;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+.products-tab {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-family: inherit;
+    padding: 16px 24px;
+    cursor: pointer;
+    color: #555;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+.products-tab.active {
+    color: #EC4E15;
+    border-bottom-color: #EC4E15;
+    font-weight: 700;
+}
+.products-tab:hover { color: #1a1a1a; }

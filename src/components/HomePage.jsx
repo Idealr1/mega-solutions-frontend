@@ -2,6 +2,7 @@ import React from 'react';
 import HeroSection from './HeroSection';
 import StatsSection from './StatsSection';
 import CabinetSection from './CabinetSection';
+import StoneSection from './StoneSection';
 import DesignSection from './DesignSection';
 import OverlaySection from './OverlaySection';
 import ProjectsSection from './ProjectsSection';
@@ -16,6 +17,7 @@ const HomePage = () => {
             <HeroSection />
             <StatsSection />
             <CabinetSection />
+            <StoneSection />
             <DesignSection />
             <OverlaySection />
             <ProjectsSection />
