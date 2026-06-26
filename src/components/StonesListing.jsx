@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Loader, ShoppingCart } from 'lucide-react';
+import { Loader } from 'lucide-react';
 import api from '../services/api';
-import { useCart } from '../context/CartContext';
 import './StonesListing.css';
 
 const CATEGORIES = [
@@ -23,7 +22,6 @@ const CATEGORIES = [
 const StonesListing = () => {
     const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
-    const { addToCart } = useCart();
     const initialCat = searchParams.get('cat') || 'all';
     const [filter, setFilter] = useState(CATEGORIES.some((c) => c.id === initialCat) ? initialCat : 'all');
     const [stones, setStones] = useState([]);
@@ -49,18 +47,6 @@ const StonesListing = () => {
         return () => { cancelled = true; };
     }, [filter]);
 
-    const quickAdd = (e, s) => {
-        e.stopPropagation();
-        addToCart({
-            id: `stone-${s.id}`,
-            name: s.name,
-            price: s.price_per_sqft ?? 0,
-            quantity: 1,
-            image: s.main_image_url,
-            stone_id: s.id,
-            unit: 'sqft',
-        });
-    };
 
     return (
         <div className="stones-listing">
@@ -97,15 +83,6 @@ const StonesListing = () => {
                                     {s.thickness && <li><span>Thickness</span> {s.thickness}</li>}
                                     {s.surface_finish && <li><span>Finish</span> {s.surface_finish}</li>}
                                 </ul>
-                                <div className="stone-tile-footer">
-                                    <div className="stone-tile-price">
-                                        ${Number(s.price_per_sqft ?? 0).toFixed(2)}
-                                        <small>/ sq.ft.</small>
-                                    </div>
-                                    <button className="stone-tile-cart-btn" onClick={(e) => quickAdd(e, s)} title="Add to cart">
-                                        <ShoppingCart size={16} />
-                                    </button>
-                                </div>
                             </div>
                         </article>
                     ))}

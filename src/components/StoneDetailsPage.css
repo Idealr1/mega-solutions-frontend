@@ -114,7 +114,29 @@
     margin: 0;
 }
 
-/* --- price + add to cart block --- */
+/* --- Contact for pricing CTA --- */
+.stone-details-quote-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+    margin: 0 0 24px;
+}
+.stone-details-quote-btn:hover {
+    background: #EC4E15;
+    transform: translateY(-1px);
+}
+
+/* (Legacy — kept in case admin price block returns) */
 .stone-details-price-block {
     background: #fafaf9;
     border: 1px solid #e5e5e5;

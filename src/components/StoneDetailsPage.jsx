@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ChevronLeft, Loader, ShoppingCart, Minus, Plus } from 'lucide-react';
+import { ChevronLeft, Loader } from 'lucide-react';
 import api from '../services/api';
-import { useCart } from '../context/CartContext';
 import './StoneDetailsPage.css';
 
 const APP_LABELS = {
@@ -30,11 +29,9 @@ const AppIcon = ({ kind }) => {
 const StoneDetailsPage = () => {
     const { slug } = useParams();
     const navigate = useNavigate();
-    const { addToCart, openCart } = useCart();
     const [stone, setStone] = useState(null);
     const [activeImg, setActiveImg] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [qty, setQty] = useState(1); // square feet
 
     useEffect(() => {
         let cancelled = false;
@@ -115,47 +112,12 @@ const StoneDetailsPage = () => {
                         </p>
                     )}
 
-                    {stone.price_per_sqft != null && (
-                        <div className="stone-details-price-block">
-                            <div className="stone-details-price">
-                                ${Number(stone.price_per_sqft).toFixed(2)}
-                                <small>/ sq.ft.</small>
-                            </div>
-                            <div className="stone-details-qty">
-                                <label>Sq.ft.</label>
-                                <div className="qty-stepper">
-                                    <button type="button" onClick={() => setQty((q) => Math.max(1, q - 1))}><Minus size={14} /></button>
-                                    <input
-                                        type="number"
-                                        min="1"
-                                        value={qty}
-                                        onChange={(e) => setQty(Math.max(1, parseInt(e.target.value, 10) || 1))}
-                                    />
-                                    <button type="button" onClick={() => setQty((q) => q + 1)}><Plus size={14} /></button>
-                                </div>
-                                <div className="stone-details-subtotal">
-                                    Subtotal: <strong>${(Number(stone.price_per_sqft) * qty).toFixed(2)}</strong>
-                                </div>
-                            </div>
-                            <button
-                                className="stone-add-cart-btn"
-                                onClick={() => {
-                                    addToCart({
-                                        id: `stone-${stone.id}`,
-                                        name: stone.name,
-                                        price: stone.price_per_sqft,
-                                        quantity: qty,
-                                        image: stone.main_image_url,
-                                        stone_id: stone.id,
-                                        unit: 'sqft',
-                                    });
-                                    openCart();
-                                }}
-                            >
-                                <ShoppingCart size={18} /> Add to cart
-                            </button>
-                        </div>
-                    )}
+                    <a
+                        className="stone-details-quote-btn"
+                        href={`/contact?subject=${encodeURIComponent('Quote request: ' + stone.name)}`}
+                    >
+                        Contact us for pricing
+                    </a>
 
                     <dl className="stone-spec-list">
                         {specRows.map(([label, value]) => (
