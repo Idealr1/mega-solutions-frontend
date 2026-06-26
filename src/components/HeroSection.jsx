@@ -25,7 +25,7 @@ const HeroSection = () => {
                             {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                         </button>
                     </div>
-                    <Link to="/more" className="hero-btn">
+                    <Link to="/products" className="hero-btn">
                         Start Here
                     </Link>
                 </div>
